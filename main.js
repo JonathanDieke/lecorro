@@ -13,9 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
 // Route test
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+// })
 
 //Configuration des routes 
 app.use('/api/', apiRouter);
