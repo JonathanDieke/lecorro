@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "LeCorro",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "<YOUR_PASSWORD>",
+    "database": "database_test_retro",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "<YOUR_PASSWORD>",
+    "database": "database_production_retro",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
