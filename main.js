@@ -27,4 +27,5 @@ if(process.env.NODE_ENV === "production"){
 app.listen(port, () => {
   const d = new Date()
   console.log(`App listening at http://localhost:${port} - ${d.getHours()}h:${d.getMinutes()}min `)
+  console.log(process.env);
 })
