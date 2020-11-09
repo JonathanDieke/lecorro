@@ -1,8 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 var apiRouter   = require('./apiRouter').router; 
-var cors = require('cors');
-const { date } = require('joi');
+var cors = require('cors'); 
 
 const app = express()
 const port = 8080
