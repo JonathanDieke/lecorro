@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 var apiRouter   = require('./apiRouter').router; 
+const path = require('path')
 var cors = require('cors'); 
 
 const app = express()
@@ -22,6 +23,10 @@ app.use('/api/', apiRouter);
 
 if(process.env.NODE_ENV === "production"){
   app.use(express.static("client/build"))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
 }
 
 app.listen(port, () => {
