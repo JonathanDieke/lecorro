@@ -4,7 +4,7 @@ var apiRouter   = require('./apiRouter').router;
 var cors = require('cors'); 
 
 const app = express()
-const port = process.en.PORT || 8080
+const port = process.env.PORT || 8080
 
 // Configuration de body parser
 app.use(bodyParser.json())
