@@ -8,6 +8,27 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
+
+let Subject  = require("./subject")
+let Study  = require("./study")
+let Level  = require("./level")
+let Corro = require('./corro')
+let Document = require("./document")
+
+Document.belongsTo(Ssubject)
+Document.hasMany(Corro, {foreignKey: "document_id"})
+
+Corro.belongsTo(Document)
+
+Subject.belongsToMany(Study, {through : "study_subject"})
+
+Study.belongsToMany(Subject, {through : "study_subject"})
+Study.belongsToMany(Level, {through : "level_study"})
+
+Level.belongsToMany(Study, {through: 'level_study'})
+
+
+
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
