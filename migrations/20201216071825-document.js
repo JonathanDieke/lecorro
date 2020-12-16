@@ -1,32 +1,39 @@
 'use strict';
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('corros', {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('documents', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      document_id: {
+      subject_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'documents',
+          model: 'subjects',
           key: 'id'
         }
+      },
+      title: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
       description: {
         allowNull: false,
         type: Sequelize.STRING
       },
+      keywords: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      }
     }, {
       timestamps : true
     });
   },
-
-  down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('corros');
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('documents');
   }
 };

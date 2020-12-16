@@ -9,15 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      level_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Levels',
-          key: 'id'
-        }
-      },
-      name: {
+      libel: {
         allowNull: false,
         type: Sequelize.STRING,
       }
