@@ -4,6 +4,7 @@ var usersCtrl    = require('./controllers/usersCtrl');
 
 // Router
 exports.router = (function() {
+  
   var apiRouter = express.Router();
 
   // Routes Users

@@ -29,8 +29,10 @@ if(process.env.NODE_ENV === "production"){
   })
 }
 
+db.sequelize.sync();
+
 app.listen(port, () => {
   const d = new Date()
   console.log(`App listening at http://localhost:${port} - ${d.getHours()}h:${d.getMinutes()}min `)
-  console.log(process.env);
+  
 })
