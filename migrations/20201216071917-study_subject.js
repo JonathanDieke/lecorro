@@ -25,8 +25,7 @@ module.exports = {
           key: 'id'
         }
       }
-    } ,{
-      timestamps : true
+    } ,{ 
     });
   },
   down: (queryInterface, Sequelize) => {

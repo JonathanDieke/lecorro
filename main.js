@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 var apiRouter   = require('./apiRouter').router; 
 const path = require('path')
 var cors = require('cors'); 
+var models    = require('./models');
 
 const app = express()
 const port = process.env.PORT || 8080
@@ -29,10 +30,16 @@ if(process.env.NODE_ENV === "production"){
   })
 }
 
-db.sequelize.sync();
-
 app.listen(port, () => {
   const d = new Date()
   console.log(`App listening at http://localhost:${port} - ${d.getHours()}h:${d.getMinutes()}min `)
-  
+
+  models.Document.findOne({
+    attributes  : ['id'],
+    where :  {subject_id: 1}, 
+    include : [{model : models.Corro}]
+  }).then(doc => {
+    console.log(doc.id);
+  })
+
 })

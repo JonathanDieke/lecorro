@@ -17,6 +17,10 @@ module.exports = {
           key: 'id'
         }
       },
+      path: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       title: {
         allowNull: false,
         type: Sequelize.STRING
@@ -29,11 +33,11 @@ module.exports = {
         allowNull: true,
         type: Sequelize.STRING,
       }
-    }, {
-      timestamps : true
     });
   },
+
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('documents');
   }
+  
 };

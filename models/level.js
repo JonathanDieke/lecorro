@@ -2,12 +2,21 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Level = sequelize.define('Level', {
-    id : DataTypes.INTEGER,
-    libel: DataTypes.STRING,
+    id : {
+      type : DataTypes.INTEGER,
+      primaryKey : true
+    },
+    libel: {
+      type : DataTypes.STRING,
+    },
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here 
+        models.Level.belongsToMany(models.Study, {
+          through: models.Level_Study,
+          foreignKey: 'level_id',
+          otherKey: 'study_id',
+        });
       }
     }
   });

@@ -2,9 +2,16 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Study_Subject = sequelize.define('Study_Subject', {
-    id : DataTypes.INTEGER,
-    study_id: DataTypes.INTEGER,
-    subject_id: DataTypes.INTEGER, 
+    id : {
+      type : DataTypes.INTEGER,
+      primaryKey : true,
+    },
+    study_id: {
+      type : DataTypes.INTEGER,
+    },
+    subject_id: {
+      type : DataTypes.INTEGER, 
+    },
   }, {
     classMethods: {
       associate: function(models) {

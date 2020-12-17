@@ -14,7 +14,6 @@ module.exports = {
         type: Sequelize.STRING,
       }
     } ,{
-      timestamps : true
     });
   },
   down: (queryInterface, Sequelize) => {

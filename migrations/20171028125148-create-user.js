@@ -14,7 +14,8 @@ module.exports = {
       },
       email: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING, 
+        unique : true
       },
       name : {
         allowNull: false,
@@ -37,8 +38,9 @@ module.exports = {
       //   type: Sequelize.STRING
       // },
       isAdmin: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN
+        allowNull: true,
+        type: Sequelize.BOOLEAN,
+        defaultValue : false
       },
       createdAt: {
         allowNull: false,

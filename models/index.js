@@ -1,36 +1,16 @@
 'use strict';
 
-var fs        = require('fs');
-var path      = require('path');
-var Sequelize = require('sequelize');
-var basename  = path.basename(__filename);
-var env       = process.env.NODE_ENV || 'development';
-var config    = require(__dirname + '/../config/config.json')[env];
-var db        = {};
-
-
-let Subject  = require("./subject")
-let Study  = require("./study")
-let Level  = require("./level")
-let Corro = require('./corro')
-let Document = require("./document")
-
-Document.belongsTo(Ssubject)
-Document.hasMany(Corro, {foreignKey: "document_id"})
-
-Corro.belongsTo(Document)
-
-Subject.belongsToMany(Study, {through : "study_subject"})
-
-Study.belongsToMany(Subject, {through : "study_subject"})
-Study.belongsToMany(Level, {through : "level_study"})
-
-Level.belongsToMany(Study, {through: 'level_study'})
-
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+const db = {};
 
 
 if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  var sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
@@ -41,7 +21,7 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    var model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 

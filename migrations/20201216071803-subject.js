@@ -11,10 +11,9 @@ module.exports = {
       },
       libel: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       }
     } ,{
-      timestamps : true
     });
   },
   down: (queryInterface, Sequelize) => {

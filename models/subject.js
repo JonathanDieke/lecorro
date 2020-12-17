@@ -2,12 +2,18 @@
 
 module.exports = (sequelize, DataTypes) => {
   var Subject = sequelize.define('Subject', {
-    id : DataTypes.INTEGER,
-    libel: DataTypes.STRING,
+    id : {
+      type : DataTypes.INTEGER,
+      primaryKey : true,
+    },
+    libel:{
+       type : DataTypes.STRING,
+    },
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here 
+        models.Subject.belongsToMany  (models.Study);
+        models.Subject.hasMany(models.Document);
       }
     }
   });
