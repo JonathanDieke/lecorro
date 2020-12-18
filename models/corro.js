@@ -14,10 +14,17 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     classMethods: {
-      associate: function(models) {
-        models.Corro.belongsTo(models.Document);
-      }
+      // associate: function(models) {
+      //   models.Corro.belongsTo(models.Document);
+      // }
     }
   });
+
+  Corro.associate = (models) => {
+    Corro.belongsTo(models.Document, {
+      targetKey : 'id', 
+      foreignKey: "document_id"
+    });
+  }
   return Corro;
 };

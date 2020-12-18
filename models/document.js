@@ -23,13 +23,20 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     classMethods: {
-      associate: function(models) {
-        models.Document.hasMany(models.Corro, {
-          foreignKey: 'document_id',
-        });
-        models.Document.belongsTo(models.Subject);
-      }
+      // associate: function(models) {
+      //   models.Document.hasMany(models.Corro, {
+      //     foreignKey: 'document_id',
+      //   });
+      //   models.Document.belongsTo(models.Subject);
+      // }
     }
   });
+
+  Document.associate = (models) => {
+    Document.hasMany(models.Corro, {
+      sourceKey: 'id',
+      foreignKey: 'document_id',
+    });
+  }
   return Document;
 };

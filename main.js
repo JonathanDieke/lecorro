@@ -33,13 +33,13 @@ if(process.env.NODE_ENV === "production"){
 app.listen(port, () => {
   const d = new Date()
   console.log(`App listening at http://localhost:${port} - ${d.getHours()}h:${d.getMinutes()}min `)
-
+  
   models.Document.findOne({
-    attributes  : ['id'],
+    attributes  : ['id', "description"],
     where :  {subject_id: 1}, 
-    include : [{model : models.Corro}]
+    include : [{model : models.Corro,}]
   }).then(doc => {
-    console.log(doc.id);
+    console.log(doc);
   })
 
 })
