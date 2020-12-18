@@ -27,11 +27,19 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Study.associate = (models) => {
+
     Study.belongsToMany(models.Subject, {
       through : 'study_subject',
       foreignKey: 'study_id',
       otherKey : 'subject_id'
     });
+
+    Study.belongsToMany(models.Level, {
+      through : 'level_study',
+      foreignKey: 'study_id',
+      otherKey : 'level_id'
+    });
+
   }
 
   return Study;

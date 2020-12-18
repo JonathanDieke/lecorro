@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 var apiRouter   = require('./apiRouter').router; 
+var corroRouter   = require('./corroRouter').router; 
 const path = require('path')
 var cors = require('cors'); 
 var models    = require('./models');
@@ -21,6 +22,7 @@ app.use(cors())
 
 //Configuration des routes 
 app.use('/api/', apiRouter);
+app.use('/', corroRouter);
 
 if(process.env.NODE_ENV === "production"){
   app.use(express.static("client/build"))
@@ -34,13 +36,13 @@ app.listen(port, () => {
   const d = new Date()
   console.log(`App listening at http://localhost:${port} - ${d.getHours()}h:${d.getMinutes()}min `)
   
-  // models.Study.findOne({
+  // models.Level.findOne({
   //   attributes  : ['id', "libel"],
   //   where :  {id: 1}, 
-  //   include : [{model : models.Subject,}]
-  // }).then(study => {
-  //   study.Subjects.forEach(subject => {
-  //     console.log(subject.libel)
+  //   include : [{model : models.Study,}]
+  // }).then(level => {
+  //   level.Studies.forEach(study => {
+  //     console.log(study.createdAt.getHours())
   //   });
   // })
 

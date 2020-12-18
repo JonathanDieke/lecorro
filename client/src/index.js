@@ -9,10 +9,9 @@ import * as serviceWorker from './serviceWorker';
 
 // const {store , persistor} = configureStore()
 
+// console.log(store);
 
-console.log(store);
-
-Axios.defaults.baseURL = "http://localhost:8080/api/"
+Axios.defaults.baseURL = "http://localhost:8080"
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

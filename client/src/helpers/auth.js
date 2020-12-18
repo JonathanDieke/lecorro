@@ -7,7 +7,7 @@ class Authentication {
     }
 
     login(data, callback){ 
-        Axios.post("users/login", { data })
+        Axios.post("/api/users/login", { data })
         .then(({data}) => {
             this.authenticated = true
             callback(data)

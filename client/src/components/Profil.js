@@ -18,7 +18,7 @@ class Profil extends React.Component{
     }
 
     componentDidMount(){ 
-        Axios.get("users/me/"+this.props.token)
+        Axios.get("/api/users/me/"+this.props.token)
         .then(({data}) => {
             this.setState({
                 register : data.register,
@@ -36,7 +36,7 @@ class Profil extends React.Component{
         console.log(this.state);
         let props = this.props
 
-        Axios.patch("users/me/" + this.props.token, this.state)
+        Axios.patch("/api/users/me/" + this.props.token, this.state)
         .then(response => {
             props.history.push('/home')
         })
