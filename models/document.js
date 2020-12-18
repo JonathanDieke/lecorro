@@ -37,6 +37,11 @@ module.exports = (sequelize, DataTypes) => {
       sourceKey: 'id',
       foreignKey: 'document_id',
     });
+
+    Document.belongsTo(models.Subject, {
+      targetKey : 'id', 
+      foreignKey: "subject_id"
+    });
   }
   return Document;
 };

@@ -11,11 +11,27 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     classMethods: {
-      associate: function(models) {
-        models.Subject.belongsToMany  (models.Study);
-        models.Subject.hasMany(models.Document);
-      }
+      // associate: function(models) {
+      //   models.Subject.belongsToMany  (models.Study);
+      //   models.Subject.hasMany(models.Document);
+      // }
     }
   });
+
+  Subject.associate = (models) => {
+    
+    Subject.hasMany(models.Document, {
+      sourceKey: 'id',
+      foreignKey: 'subject_id',
+    });
+
+    Subject.belongsToMany(models.Study, {
+      through : 'study_subject',
+      foreignKey: 'subject_id',
+      otherKey : "study_id"
+    });
+
+  }
+
   return Subject;
 };

@@ -34,13 +34,14 @@ app.listen(port, () => {
   const d = new Date()
   console.log(`App listening at http://localhost:${port} - ${d.getHours()}h:${d.getMinutes()}min `)
   
-  // models.User.findOne({
-  //   attributes: [ 'id', 'register', 'name', 'lastname', 'email', 'pseudo' ],
-  //   where: { id: 1 }
-  // }).then(user => {
-  //   user.update({
-  //     lastname : "jo updated 2"
-  //   })
+  // models.Study.findOne({
+  //   attributes  : ['id', "libel"],
+  //   where :  {id: 1}, 
+  //   include : [{model : models.Subject,}]
+  // }).then(study => {
+  //   study.Subjects.forEach(subject => {
+  //     console.log(subject.libel)
+  //   });
   // })
 
 })
