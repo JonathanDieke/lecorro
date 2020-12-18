@@ -34,12 +34,13 @@ app.listen(port, () => {
   const d = new Date()
   console.log(`App listening at http://localhost:${port} - ${d.getHours()}h:${d.getMinutes()}min `)
   
-  models.Document.findOne({
-    attributes  : ['id', "description"],
-    where :  {subject_id: 1}, 
-    include : [{model : models.Corro,}]
-  }).then(doc => {
-    console.log(doc);
-  })
+  // models.User.findOne({
+  //   attributes: [ 'id', 'register', 'name', 'lastname', 'email', 'pseudo' ],
+  //   where: { id: 1 }
+  // }).then(user => {
+  //   user.update({
+  //     lastname : "jo updated 2"
+  //   })
+  // })
 
 })

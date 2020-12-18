@@ -25,8 +25,20 @@ module.exports = {
           model: 'studies',
           key: 'id'
         }
+      }, 
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE, 
+        defaultValue : new Date()
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE, 
+        defaultValue : new Date()
       }
+
     } ,{ 
+      timestamps:true
     });
   },
   down: (queryInterface, Sequelize) => {

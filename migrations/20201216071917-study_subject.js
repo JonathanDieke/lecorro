@@ -24,8 +24,20 @@ module.exports = {
           model: 'subjects',
           key: 'id'
         }
+      }, 
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE, 
+        defaultValue : new Date()
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE, 
+        defaultValue : new Date()
       }
+
     } ,{ 
+      timestamps:true
     });
   },
   down: (queryInterface, Sequelize) => {

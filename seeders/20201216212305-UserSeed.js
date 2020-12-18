@@ -10,8 +10,6 @@ module.exports = {
         lastname: 'jo',
         pseudo: 'Jojo',
         password: '12345678',
-        createdAt : new Date(),
-        updatedAt : new Date(),
      }], {});
     
   },
