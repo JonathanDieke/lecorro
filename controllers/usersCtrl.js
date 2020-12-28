@@ -12,7 +12,7 @@ const PASSWORD_REGEX  = /^(?=.*\d).{4,8}$/;
 module.exports = {
   register: function(req, res) {
     // Params
-    var {register ,email, name, lastname, pseudo, password, cpassword} = {...req.body};
+    var {register ,email, name, lastname, pseudo, password, cpassword} = {...req.body.data};
 
     if (register == "" || email == "" || name == "" || lastname == "" || pseudo == "" || password == "" || cpassword == "") {
       return res.json({ 'error': "Veuillez remplir tous les champs !" });

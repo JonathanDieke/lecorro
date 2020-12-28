@@ -26,6 +26,8 @@ class Register extends React.Component{
                 baseURL : "http://localhost:3000"
             })
         }
+
+        console.log(this.api.defaults.baseURL)
     }
 
     handleInputsChange = (e) => {
