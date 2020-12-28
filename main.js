@@ -36,6 +36,8 @@ sequelize.sync()
   .then( () => {
     console.log("\nconnection à la bd établie ");
     console.log(process.env.NODE_ENV);
+  }).catch( () =>{
+    console.log("connexion à la bd impossible ");
   });
 
 // run server 
