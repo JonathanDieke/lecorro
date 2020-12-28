@@ -18,7 +18,7 @@ class Register extends React.Component{
         }
         this.state = {response : null, ...this.initialState}
         this.api = Axios.create({
-            baseURL : "http://localhost:8080/"
+            baseURL : "http://localhost:3000"
         })
     }
 
@@ -32,7 +32,7 @@ class Register extends React.Component{
         e.preventDefault()
         const data  = this.state
 
-        this.api.post('api/users/register', { data })
+        this.api.post('/api/users/register', { data })
         .then(({data}) => { 
             if(data.error){
                 this.setState({response : data.error}) 
@@ -45,7 +45,7 @@ class Register extends React.Component{
             }
         })
         .catch(err => {
-            this.setState({response : "Une erreur s'est produite, veuillez réessayer plutard !"}) 
+            this.setState({response : "Une erreur s'est produite, veuillez réessayer ultérieurement !"}) 
             console.log("Une erreur s'est produite lors de l'enregistrement front-end", err)
         })
     }

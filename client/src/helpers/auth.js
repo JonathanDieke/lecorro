@@ -14,7 +14,7 @@ class Authentication {
         })
         .catch(err => {
             callback(err)
-            console.log("Erreur interne du serveur", err)
+            console.log("Erreur interne du serveur ", err)
         })
     }
 

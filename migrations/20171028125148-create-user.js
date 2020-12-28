@@ -50,7 +50,7 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE, 
-        defaultValue : new Date()
+        defaultValue : new Date()   
       }
 
     }, {

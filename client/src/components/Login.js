@@ -23,13 +23,15 @@ class Login extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
+        
         this.setState({response : null}) 
         let props = this.props
 
         auth.login(this.state, (data) => { 
+            console.log(data);
             if(data.error){ //Mot de passe incorrect
                 this.setState({response : data.error, password:""}) 
-            }else if(data.userId && data.token && data.email && data.pseudo && data.name && data.lastname){ // identifiants corrects 
+            }else if(data.id && data.token && data.email && data.pseudo && data.name && data.lastname){ // identifiants corrects 
                 const action = {
                     type : "CONNECTED_USER", 
                     value : {...data}

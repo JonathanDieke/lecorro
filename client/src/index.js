@@ -11,7 +11,10 @@ import * as serviceWorker from './serviceWorker';
 
 // console.log(store);
 
-Axios.defaults.baseURL = "http://localhost:8080"
+Axios.defaults.baseURL = "http://localhost:8000"
+// Axios.defaults.headers.authorization  = "Access-Control-Allow-Origin"
+
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

@@ -12,8 +12,8 @@ const PASSWORD_REGEX  = /^(?=.*\d).{4,8}$/;
 module.exports = {
   register: function(req, res) {
     // Params
-    var {register ,email, name, lastname, pseudo, password, cpassword} = {...req.body.data};
-    
+    var {register ,email, name, lastname, pseudo, password, cpassword} = {...req.body};
+
     if (register == "" || email == "" || name == "" || lastname == "" || pseudo == "" || password == "" || cpassword == "") {
       return res.json({ 'error': "Veuillez remplir tous les champs !" });
     }
@@ -96,6 +96,7 @@ module.exports = {
   },
 
   login: function(req, res) {
+    console.log("login controller");
     // Params 
     var {email, password} = req.body.data;
 
@@ -135,8 +136,9 @@ module.exports = {
     ], 
     function(userFound) {
       if (userFound) {
+        console.log(userFound);
         return res.status(201).json({
-          'userId': userFound.id,
+          'id': userFound.id,
           'token': jwtUtils.generateTokenForUser(userFound),
           'email': userFound.email,
           'name': userFound.name,
