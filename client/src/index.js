@@ -7,11 +7,15 @@ import Axios from 'axios'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// const {store , persistor} = configureStore()
 
-// console.log(store);
+if(process.env.NODE_ENV === "development"){
+  Axios.defaults.baseURL = "http://localhost:8000"
+}
+if(process.env.NODE_ENV === "production"){
+  Axios.defaults.baseURL = "https://lecorro.herokuapp.com"
+}
 
-Axios.defaults.baseURL = "http://localhost:8000"
+
 // Axios.defaults.headers.authorization  = "Access-Control-Allow-Origin"
 
 

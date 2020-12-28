@@ -35,10 +35,12 @@ if(process.env.NODE_ENV === "production"){
 sequelize.sync()
   .then( () => {
     console.log("\nconnection à la bd établie ");
+    console.log(process.env.NODE_ENV);
   });
 
 // run server 
 app.listen(port, () => {
   const d = new Date();
+  
   console.log(`App listening at http://localhost:${port} - ${d.getHours()}h:${d.getMinutes()}min `);
 })

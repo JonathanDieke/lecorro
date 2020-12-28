@@ -17,9 +17,15 @@ class Register extends React.Component{
             cpassword : "",
         }
         this.state = {response : null, ...this.initialState}
-        this.api = Axios.create({
-            baseURL : "http://localhost:3000"
-        })
+        if(process.env.NODE_ENV === "production"){
+            this.api = Axios.create({
+                baseURL : "https://lecorro.herokuapp.com"
+            })
+        }else{
+            this.api = Axios.create({
+                baseURL : "http://localhost:3000"
+            })
+        }
     }
 
     handleInputsChange = (e) => {
