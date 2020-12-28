@@ -6,6 +6,15 @@ const path = require('path')
 var cors = require('cors'); 
 var models    = require('./models');
 
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+
 const app = express()
 const port = process.env.PORT || 8080
 
@@ -23,6 +32,19 @@ app.use(cors())
 //Configuration des routes 
 app.use('/api/', apiRouter);
 app.use('/', corroRouter);
+
+app.get('/db', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM test_table');
+    const results = { 'results': (result) ? result.rows : null};
+    res.render('pages/db', results );
+    client.release();
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+})
 
 if(process.env.NODE_ENV === "production"){
   app.use(express.static("client/build"))
