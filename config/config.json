@@ -19,6 +19,6 @@
     "database": "daenm3na0gr4r0",
     "host": "ec2-54-211-99-192.compute-1.amazonaws.com",
     "dialect": "mysql", 
-    "port" : 5432,
+    "port" : 5432
   }
 }
