@@ -9,9 +9,9 @@ class AddDocument extends React.Component{
     constructor(props){
         super(props)
         this.initialState = {
-            title : "Ex. Cours de Java",
-            description : "Ex. Cours de Java SIGL2 2019-2020",
-            keywords : "Ex. Cours, java, sigl, licence2, 2019, 2020",
+            title : "",
+            description : "",
+            keywords : "",
             subject_id : "1",
             document : "", 
             subjects : []
@@ -116,6 +116,7 @@ class AddDocument extends React.Component{
                             <div className="col-sm-9">
                             <input name="title" type="text" className="form-control" id="title" 
                                 value={this.state.title}
+                                placeholder="Ex. : Cours de Java"
                                 onChange={this.handleInputsChange}/>
                             </div>
                         </div>
@@ -125,6 +126,7 @@ class AddDocument extends React.Component{
                             <div className="col-sm-9">
                             <input name="description" type="text" className="form-control" id="description" 
                                 value={this.state.description}
+                                placeholder="Ex. : Cours de Java SIGL2 2019-2020"
                                 onChange={this.handleInputsChange}/>
                             </div>
                         </div>
@@ -134,6 +136,7 @@ class AddDocument extends React.Component{
                             <div className="col-sm-9">
                             <input name="keywords" type="text" className="form-control" id="keywords" 
                                 value={this.state.keywords}
+                                placeholder="Ex. : Cours, java, sigl, licence2, 2019, 2020"
                                 onChange={this.handleInputsChange}/>
                             </div>
                         </div>  

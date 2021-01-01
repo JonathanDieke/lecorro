@@ -1,5 +1,7 @@
 // Imports
 var models    = require('../models');
+var sequelize = require('sequelize')
+const operator = sequelize.Op
 
 module.exports = {
 
@@ -27,10 +29,18 @@ module.exports = {
   },
 
   search : (req, res) => {
-    console.log(req.fields);
+    let q = req.query.q;
 
-    res.json({
-      req : req.fields
+    models.Document.findAll({
+      where : {
+        title : {[operator.like] : `%${q}%`}, 
+        description : {[operator.like] : `%${q}%`}, 
+        keywords : {[operator.like] : `%${q}%`}, 
+      }
+    })
+    .then( data => {
+      console.log(data);
+      res.json({data})
     })
     
   },

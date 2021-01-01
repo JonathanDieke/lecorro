@@ -1,6 +1,7 @@
 import React from 'react' 
 import Axios from 'axios'
 import Navigation from './Navigation'
+import Card from './Card'
 
 class Search extends React.Component{ 
 
@@ -8,7 +9,8 @@ class Search extends React.Component{
         super(props)
 
         this.state = {
-            q : 'query'
+            q : 'java', 
+            results : []
         }
     }
 
@@ -21,9 +23,17 @@ class Search extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault()
 
-        Axios.get('/search/')
-        .then(data => {
-            console.log(data);
+        Axios.get('/search/', {
+            params: {
+                q : this.state.q
+            }
+        })
+        .then( ( {data} ) => {
+            this.setState({
+                results : data.data.map( (value, index) => {
+                    return {path : value.path, title : value.title, description: value.description, keywords : value.keywords}
+                })
+            })
         })
         .catch(err => {
             console.log(err);
@@ -55,6 +65,15 @@ class Search extends React.Component{
                     </form>
                 </div>
 
+
+                <div className="row">
+                    {
+                        this.state.results.map( (value, index) => {
+                            
+                            return <Card data = {value} key={index}></Card>
+                        })
+                    }
+                </div>
             </div>
             </div>
         )
