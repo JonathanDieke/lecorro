@@ -27,15 +27,15 @@ class Navigation extends React.Component {
 
         if(localStorage.getItem('token')){
             navbarLinks = (
-                <ul className="navbar-nav ml-auto" style={liStyle}> 
+                <ul className="navbar-nav ml-auto mr-5" style={liStyle}> 
                     <li className="nav-item dropdown" >
-                        <a href="profil" className="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                        <a href="profil" className="nav-link dropdown-toggle text-capitalize" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
                             {this.props.pseudo ? this.props.pseudo : 'Profil'}
                         </a>
                         <ul className="dropdown-menu dropdown-menu-dark"> 
                             <NavLink to='/home'>
                                 <li style={liStyle}>
-                                    Home
+                                    Dashboard
                                 </li>
                             </NavLink>
                             <NavLink to='/users/me'>
@@ -77,11 +77,24 @@ class Navigation extends React.Component {
                         <img style={{height : "30px", width : "40px"}} src={logo} alt='logo'></img>
                         LeCorro 
                     </NavLink>
+                    
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
     
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav mr-auto ml-5" style={liStyle}> 
+                            <NavLink to='/add_document'>
+                                    <li style={liStyle}>
+                                         Ajouter un document
+                                    </li>
+                                </NavLink>
+                            <NavLink to='/search'>
+                                    <li style={liStyle}>
+                                        Rechercher un document
+                                    </li>
+                                </NavLink>
+                        </ul>
                         {navbarLinks}
                     </div>
                 </nav>

@@ -1,12 +1,27 @@
 import React from 'react' 
 import Axios from 'axios'
+import Navigation from './Navigation'
 
 class Search extends React.Component{ 
+
+    constructor(props){
+        super(props)
+
+        this.state = {
+            q : 'query'
+        }
+    }
+
+    handleInputsChange = (e) => {
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+    } 
 
     handleSubmit = (e) => {
         e.preventDefault()
 
-        Axios.post('/search', {})
+        Axios.get('/search/')
         .then(data => {
             console.log(data);
         })
@@ -18,21 +33,29 @@ class Search extends React.Component{
     
     render(){
         return(
-            <div className="container">
+            <div>
+
+            <Navigation/>
+
+            <div className="container"style={{ paddingTop :' 80px' }}>
+
                 <p className="text-center " >
-                    LeCorro Search Page 
+                    Barre De Recherche
                 </p>
 
-                <div>
-                    <form onSubmit={this.handleSubmit} encType='multipart/form-data' className="row">
-                            <div className="col-sm-7">
-                                <input name="file" type="file" className="form-control" id="file" />
+                <div className="d-flex justify-content-center ">
+                    <form onSubmit={this.handleSubmit} >
+                            <div className="input-group mb-3">
+                                <input type="text" 
+                                    className="form-control" 
+                                    name="q" value={this.state.q} 
+                                    onChange={this.handleInputsChange} />
+                                <button className=" btn btn-outline-success" type='submit' id="basic-addon2">Corroter</button>
                             </div>
-                            <div className="col-sm-3"></div>
-                            <button type="submit" className="btn btn-success">Corroter</button>
-                        </form>
+                    </form>
                 </div>
 
+            </div>
             </div>
         )
     }

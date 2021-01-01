@@ -3,9 +3,9 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return await queryInterface.bulkInsert('Subjects', [{
-      libel : "POO",
-    }, {
       libel : "JAVA",
+    }, {
+      libel : "POO",
     }, {
       libel : "Analyse Numérique",
     }, {

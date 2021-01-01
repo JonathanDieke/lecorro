@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
     keywords:{
        type : DataTypes.STRING,
     },
+    originalName:{
+       type : DataTypes.STRING,
+    },
+    
   }, {
     classMethods: {
       // associate: function(models) {

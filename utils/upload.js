@@ -1,36 +1,17 @@
 const multer = require("multer");
+let path = require("path")
 
-
-var doc = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, __basedir + "/ressources/uploads/");
+var document = multer.diskStorage({
+  destination: (req, file, cb) => { 
+    cb(null,path.resolve()+"/ressources/uploads/documents");
   },
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}- Document de -${file.originalname}`);
+    let d = new Date()
+    console.log("upload", file);
+    cb(null, `${d.getFullYear()}${d.getMonth()}${d.getDate()}${d.getHours() < 10 ? "0"+d.getHours() : d.getHours()}${d.getMinutes() < 10 ? '0'+d.getMinutes() : d.getMinutes()}-Document-de-${req.body.title.trim().replace(/ /g, "-")}.${file.originalname.split('.').pop()}`);
   },
 });
 
-var sjt = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, __basedir + "/ressources/uploads/");
-    },
-    filename: (req, file, cb) => {
-      cb(null, `${Date.now()}- Sujet de -${file.originalname}`);
-    },
-  });
+var uploadDocument = multer({ storage: document});
 
-  var corr = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, __basedir + "/ressources/uploads/");
-    },
-    filename: (req, file, cb) => {
-      cb(null, `${Date.now()}- Correction de -${file.originalname}`);
-    },
-  });
-
-
-var uploadDoc = multer({ storage: doc});
-var uploadSjt = multer({ storage: sjt});
-var uploadCorr = multer({ storage: corr});
-
-module.exports = { uploadDoc, uploadCorr, uploadSjt }
+module.exports = { uploadDocument }

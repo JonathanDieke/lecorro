@@ -3,10 +3,11 @@ import React from 'react';
 class Response extends React.Component{
 
     render(){
+        let baseClass = `alert text-center alert-${this.props.data.classname }`
 
         return(
-            <div className="alert alert-warning text-center">
-                {this.props.message}
+            <div className={baseClass} >
+                {this.props.data.title}
             </div>
         )
     } 

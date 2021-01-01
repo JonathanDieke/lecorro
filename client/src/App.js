@@ -10,6 +10,7 @@ import Home from './components/Home'
 import Profil from './components/Profil'
 import 'semantic-ui-css/semantic.min.css'
 import Search from './components/Search';
+import AddDocument from './components/AddDocument';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <ProtectedRoute path="/home" exact component={Home}></ProtectedRoute>
           <ProtectedRoute path="/users/me" exact component={Profil}></ProtectedRoute> 
           <Route path="/search" exact component={Search} />
+          <Route path="/add_document" exact component={AddDocument} />
           <Route path="*" component={PageNotFound}/>
         </Switch>
       </Router>

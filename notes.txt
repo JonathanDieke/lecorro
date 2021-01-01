@@ -1,0 +1,1 @@
+heroku run sequelize db:migrate  # pour migrer les tables

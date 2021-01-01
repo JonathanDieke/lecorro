@@ -8,26 +8,16 @@ class Register extends React.Component{
     constructor(props){
         super(props)
         this.initialState = {
-            register : "",
-            email : "",
-            name : "",
-            lastname : "",
-            pseudo : "",
-            password : "",
-            cpassword : "",
+            register : "matricule1",
+            email : "louloulexus@gmail.com",
+            name : "Dieke",
+            lastname : "Jonathan",
+            pseudo : "person",
+            password : "1234",
+            cpassword : "1234",
         }
-        this.state = {response : null, ...this.initialState}
-        if(process.env.NODE_ENV === "production"){
-            this.api = Axios.create({
-                baseURL : "https://lecorro.herokuapp.com"
-            })
-        }else{
-            this.api = Axios.create({
-                baseURL : "http://localhost:3000"
-            })
-        }
+        this.state = {responseComponent : null, ...this.initialState}
 
-        console.log(this.api.defaults.baseURL)
     }
 
     handleInputsChange = (e) => {
@@ -40,12 +30,17 @@ class Register extends React.Component{
         e.preventDefault()
         const data  = this.state
 
-        this.api.post('/api/users/register', { data })
+        Axios.post('/api/users/register', { data })
         .then(({data}) => { 
             if(data.error){
                 this.setState({response : data.error}) 
-            }else if(data.userId){
-                this.setState({response : "Vous êtes bien enregistrés !"}) 
+            }else if(data.user){
+                this.setState({
+                    responseComponent :{
+                        title : "Vous êtes bien enregistrés !", 
+                        classname : 'success'
+                    } 
+                }) 
                 this.setState(this.initialState) 
                 setTimeout(() => {
                     this.props.history.push("/home")
@@ -53,7 +48,12 @@ class Register extends React.Component{
             }
         })
         .catch(err => {
-            this.setState({response : "Une erreur s'est produite, veuillez réessayer ultérieurement !"}) 
+            this.setState({
+                responseComponent :{
+                    title : "Une erreur s'est produite, veuillez réessayer ultérieurement !", 
+                    classname : 'danger'
+                }
+            }) 
             console.log("Une erreur s'est produite lors de l'enregistrement front-end", err)
         })
     }
@@ -67,7 +67,7 @@ class Register extends React.Component{
 
                 <div className='container col-6' style={{ paddingTop :' 80px' }}>
 
-                    {this.state.response != null ? <Response message={this.state.response}/> : null}
+                    {this.state.responseComponent != null ? <Response data={this.state.responseComponent}/> : this.state.responseComponent}
 
                     <form onSubmit={this.handleSubmit}>
                         <div className="mb-3 row">

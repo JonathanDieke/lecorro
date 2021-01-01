@@ -11,7 +11,10 @@ const PASSWORD_REGEX  = /^(?=.*\d).{4,8}$/;
 // Routes
 module.exports = {
   register: function(req, res) {
+
     // Params
+    console.log(req.body.data);
+
     var {register ,email, name, lastname, pseudo, password, cpassword} = {...req.body.data};
 
     if (register == "" || email == "" || name == "" || lastname == "" || pseudo == "" || password == "" || cpassword == "") {
@@ -86,7 +89,7 @@ module.exports = {
       function(newUser) {
         if (newUser) {
           return res.json({
-            'userId': newUser.id
+            user : newUser
           });
         } else {
           console.log("Impossible de récupérer l'utilisateur enregistré.");

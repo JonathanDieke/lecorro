@@ -5,6 +5,7 @@ var corroRouter   = require('./corroRouter').router;
 const path = require('path')
 var cors = require('cors'); 
 const {sequelize} = require('./models'); 
+const { dirname } = require('path');
 
 const app = express()
 const port = process.env.PORT || 8000
@@ -16,9 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
 //Configuration des routes 
-app.post('/', (req, res) => {
-  res.send({"response" : 'bon ça marche uhn'})
-});
+// app.post('/', (req, res) => {
+//   res.send({"response" : 'bon ça marche uhn'})
+// });
 app.use('/api/', apiRouter);
 app.use('/', corroRouter);
 
@@ -32,17 +33,17 @@ if(process.env.NODE_ENV === "production"){
 }
 
 //create all tables if not exist
-sequelize.sync()
-  .then( () => {
-    console.log("\nconnection à la bd établie ");
-    console.log(process.env.NODE_ENV);
-  }).catch( () =>{
-    console.log("connexion à la bd impossible ");
-  });
+// sequelize.sync()
+//   .then( () => {
+//     console.log("\nconnection à la bd établie ");
+//     console.log("port : ", port);
+//     console.log( path.resolve()+"/ressources/uploads/corro" );
+//   }).catch( () =>{
+//     console.log("connexion à la bd impossible ");
+//   });
 
 // run server 
 app.listen(port, () => {
   const d = new Date();
-  
-  console.log(`App listening at http://localhost:${port} - ${d.getHours()}h:${d.getMinutes()}min `);
+  console.log(`App listening at http://localhost:${port} - ${d.getHours() < 10 ? "0"+d.getHours() : d.getHours() }h:${d.getMinutes() < 10 ?"0"+d.getMinutes() : d.getMinutes() }min `);
 })

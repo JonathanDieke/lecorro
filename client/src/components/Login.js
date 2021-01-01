@@ -11,7 +11,7 @@ class Login extends React.Component{
         this.state = {
             email : 'louloulexus@gmail.com',
             password : '1234',
-            response : null,
+            responseComponent : null,
         } 
     }
 
@@ -24,13 +24,18 @@ class Login extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault()
         
-        this.setState({response : null}) 
+        this.setState({responseComponent : null}) 
         let props = this.props
 
         auth.login(this.state, (data) => { 
-            console.log(data);
             if(data.error){ //Mot de passe incorrect
-                this.setState({response : data.error, password:""}) 
+                this.setState({
+                    responseComponent : {
+                        title : data.error, 
+                        classname : "danger"
+                    }, 
+                    password:""
+                }) 
             }else if(data.id && data.token && data.email && data.pseudo && data.name && data.lastname){ // identifiants corrects 
                 const action = {
                     type : "CONNECTED_USER", 
@@ -40,10 +45,14 @@ class Login extends React.Component{
                 localStorage.setItem('token', data.token)
                 props.history.push("/home")
             }else{ // Erreur interne du serveur 
-                this.setState({response : "Erreur de connexion, veuillez réessayer ultérieurement !"})   
+                this.setState({
+                    responseComponent  : {
+                        title : "Erreur de connexion, veuillez réessayer ultérieurement !", 
+                        classname : "danger"
+                    }
+                })   
             }
         })
-        
     } 
 
     render(){
@@ -52,7 +61,7 @@ class Login extends React.Component{
                 <Navigation />
 
                 <div className='container col-6' style={{ paddingTop :' 80px' }}>
-                    {this.state.response ? <Response message={this.state.response} /> : this.state.response}
+                    {this.state.responseComponent ? <Response data={this.state.responseComponent} /> : this.state.responseComponent}
 
                     <form onSubmit={this.handleSubmit}>
                         <div className="mb-3 row">
