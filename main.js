@@ -5,7 +5,8 @@ var corroRouter   = require('./corroRouter').router;
 const path = require('path')
 var cors = require('cors'); 
 const {sequelize} = require('./models'); 
-const { dirname } = require('path');
+const env = process.env.NODE_ENV || 'development';
+const config = require('./config/config.json')[env];
 
 const app = express()
 const port = process.env.PORT || 8000
