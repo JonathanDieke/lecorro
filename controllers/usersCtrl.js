@@ -81,7 +81,7 @@ module.exports = {
             done(newUser);
           })
           .catch(function(err) {
-            console.log("Erreur du serveur !");
+            console.log("Erreur du serveur !", err);
             return res.json({ 'error': "Une erreur s'est produite lors de l'enregistrement de l'utilisateur."});
           });
         }
