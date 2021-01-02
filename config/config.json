@@ -20,9 +20,11 @@
     "database": "daenm3na0gr4r0",
     "dialect": "postgres", 
     "dialectOptions": {
-      "ssl": true
+      "ssl": true, 
+      "rejectUnauthorized": false 
     },
     "protocol": "postgres", 
-    "port" : 5432
+    "port" : 5432, 
+    "ssl" : true
   }
 }

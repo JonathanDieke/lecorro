@@ -7,6 +7,9 @@ var cors = require('cors');
 const {sequelize} = require('./models'); 
 const config = require('./config/config.json')
 
+var pg = require('pg');
+pg.defaults.ssl = true;
+
 const app = express()
 const port = process.env.PORT || 8000
 
