@@ -12,7 +12,7 @@ class AddDocument extends React.Component{
             title : "",
             description : "",
             keywords : "",
-            subject_id : "1",
+            subject_id : "",
             document : "", 
             subjects : []
         }
