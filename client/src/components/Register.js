@@ -33,7 +33,7 @@ class Register extends React.Component{
         Axios.post('/api/users/register', { data })
         .then(({data}) => { 
             if(data.error){
-                this.setState({response : data.error}) 
+                this.setState({responseComponent : data.error}) 
             }else if(data.user){
                 this.setState({
                     responseComponent :{
