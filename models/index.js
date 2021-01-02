@@ -9,8 +9,10 @@ const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable], config);
+if (process.env.NODE_ENV == "production") {
+  // var sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  // var sequelize = new Sequelize(config.production, config.production);
+  var sequelize = new Sequelize("postgres://twvkxmjpmfovez:3297c7cbd631fade88ec85d2a34faa3190af19268f615c992991d06fbc3316ce@ec2-54-211-99-192.compute-1.amazonaws.com:5432/daenm3na0gr4r0");
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }

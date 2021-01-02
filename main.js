@@ -5,6 +5,7 @@ var corroRouter   = require('./corroRouter').router;
 const path = require('path')
 var cors = require('cors'); 
 const {sequelize} = require('./models'); 
+const config = require('./config/config.json')
 
 const app = express()
 const port = process.env.PORT || 8000
@@ -31,19 +32,26 @@ if(process.env.NODE_ENV === "production"){
   })
 }
 
+// Testing the connection
+try {
+  sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
+
 //create all tables if not exist
-// sequelize.sync()
-//   .then( () => {
-//     console.log("\nconnection à la bd établie ");
-//     console.log("port : ", port);
-//     console.log( path.resolve()+"/ressources/uploads/corro" );
-//   }).catch( () =>{
-//     console.log("connexion à la bd impossible ");
-//   });
+sequelize.sync()
+  .then( () => {
+    console.log("\nconnection à la bd établie ");
+    console.log("port : ", port);
+    console.log( path.resolve()+"/ressources/uploads/corro" );
+  }).catch( () =>{
+    console.log("connexion à la bd impossible ");
+  });
 
 // run server 
 app.listen(port, () => {
   const d = new Date();
-  console.log(process.env.NODE_ENV);
   console.log(`App listening at http://localhost:${port} - ${d.getHours() < 10 ? "0"+d.getHours() : d.getHours() }h:${d.getMinutes() < 10 ?"0"+d.getMinutes() : d.getMinutes() }min `);
 })
