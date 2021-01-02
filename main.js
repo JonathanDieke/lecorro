@@ -45,6 +45,6 @@ if(process.env.NODE_ENV === "production"){
 // run server 
 app.listen(port, () => {
   const d = new Date();
-  process.env.HEROKU_POSTGRESQL_BRONZE_URL
+  console.log(process.env.HEROKU_POSTGRESQL_BRONZE_URL);
   console.log(`App listening at http://localhost:${port} - ${d.getHours() < 10 ? "0"+d.getHours() : d.getHours() }h:${d.getMinutes() < 10 ?"0"+d.getMinutes() : d.getMinutes() }min `);
 })
