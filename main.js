@@ -5,8 +5,6 @@ var corroRouter   = require('./corroRouter').router;
 const path = require('path')
 var cors = require('cors'); 
 const {sequelize} = require('./models'); 
-const env = process.env.NODE_ENV || 'development';
-const config = require('./config/config.json')[env];
 
 const app = express()
 const port = process.env.PORT || 8000
@@ -46,6 +44,6 @@ if(process.env.NODE_ENV === "production"){
 // run server 
 app.listen(port, () => {
   const d = new Date();
-  console.log(config.use_env_variable);
+  console.log(process.env.NODE_ENV);
   console.log(`App listening at http://localhost:${port} - ${d.getHours() < 10 ? "0"+d.getHours() : d.getHours() }h:${d.getMinutes() < 10 ?"0"+d.getMinutes() : d.getMinutes() }min `);
 })
