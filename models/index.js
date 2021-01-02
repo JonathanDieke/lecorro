@@ -16,8 +16,10 @@ if (process.env.NODE_ENV == "production") {
     host: "ec2-54-211-99-192.compute-1.amazonaws.com",
     dialect: "postgres", 
     dialectOptions: {
-      "ssl": true, 
-      "rejectUnauthorized": false 
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
     },
     protocol: "postgres", 
     port : 5432, 
