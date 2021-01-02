@@ -8,6 +8,9 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
+var pg = require('pg');
+pg.defaults.ssl = true;
+
 
 if (process.env.NODE_ENV == "production") {
   // var sequelize = new Sequelize(process.env[config.use_env_variable], config);

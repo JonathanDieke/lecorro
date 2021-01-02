@@ -16,10 +16,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(cors())
 
-//Configuration des routes 
-// app.post('/', (req, res) => {
+// Configuration des routes 
+// app.get('/', (req, res) => {
 //   res.send({"response" : 'bon ça marche uhn'})
 // });
+
 app.use('/api/', apiRouter);
 app.use('/', corroRouter);
 
