@@ -34,8 +34,8 @@ module.exports = {
     models.Document.findAll({
       where : {
         title : {[operator.like] : `%${q}%`}, 
-        description : {[operator.like] : `%${q}%`}, 
-        keywords : {[operator.like] : `%${q}%`}, 
+        // description : {[operator.like] : `%${q}%`}, 
+        // keywords : {[operator.like] : `%${q}%`}, 
       }
     })
     .then( data => {

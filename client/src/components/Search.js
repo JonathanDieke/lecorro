@@ -9,7 +9,7 @@ class Search extends React.Component{
         super(props)
 
         this.state = {
-            q : 'java', 
+            q : '', 
             results : []
         }
     }
@@ -17,7 +17,10 @@ class Search extends React.Component{
     handleInputsChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value
+        }, () => {
+            console.log(this.state.q);
         })
+        
     } 
 
     handleSubmit = (e) => {
@@ -29,6 +32,7 @@ class Search extends React.Component{
             }
         })
         .then( ( {data} ) => {
+            console.log(data);
             this.setState({
                 results : data.data.map( (value, index) => {
                     return {path : value.path, title : value.title, description: value.description, keywords : value.keywords}

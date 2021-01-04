@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 if(process.env.NODE_ENV === "development"){
-  Axios.defaults.baseURL = "http://localhost:8000"
+  Axios.defaults.baseURL = "http://localhost:3000"
 }
 if(process.env.NODE_ENV === "production"){
   Axios.defaults.baseURL = "https://lecorro.herokuapp.com"

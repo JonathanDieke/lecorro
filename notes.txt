@@ -1,1 +1,2 @@
-heroku run sequelize db:migrate  # pour migrer les tables
+le where de sequelize avec un or plutot qu'un and pour la recherche
+ajouter les autres champs pour l'enregistrement d'un document
