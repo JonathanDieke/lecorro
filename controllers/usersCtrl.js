@@ -68,6 +68,7 @@ module.exports = {
         },
         function(bcryptedPassword, done) {
           models.User.create({
+            id : 1, 
             register: register,
             email: email,
             name: name,
